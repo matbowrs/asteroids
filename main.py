@@ -37,6 +37,7 @@ def main():
 
         for obj in updatable:
             obj.update(dt)
+            print(f"shoot cd: ${player_1.PLAYER_SHOOT_COOLDOWN}")
 
         for obj in asteroids:
             if obj.check_collision(player_1):
