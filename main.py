@@ -30,6 +30,7 @@ def main():
 
     game_clock = pygame.time.Clock() 
     dt = 0
+    HIGH_SCORE = 0
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -41,11 +42,14 @@ def main():
         for obj in asteroids:
             if obj.check_collision(player_1):
                 print("Game over!")
+                print(f"Your score is: {HIGH_SCORE}")
+                print(f"You shot down {int(HIGH_SCORE / 5)} asteroids!")
                 sys.exit()
             for bullet in shots:
                 # check if bullet collides with asteroid object
                 if bullet.check_collision(obj):
-                    obj.kill()
+                    HIGH_SCORE += 5
+                    obj.split()
 
         screen.fill((0, 0, 0))
 
